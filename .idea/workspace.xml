@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fac39ea-d22a-4969-a78d-e9446c2c0edb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cylinder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ueb07.html" beforeDir="false" afterPath="$PROJECT_DIR$/ueb07.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -16,13 +17,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ueb07.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+            <state relative-caret-position="3026">
+              <caret line="178" column="13" selection-start-line="161" selection-start-column="12" selection-end-line="178" selection-end-column="13" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cylinder.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="154" column="16" selection-start-line="154" selection-start-column="16" selection-end-line="154" selection-end-column="16" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,7 +66,11 @@
       <list>
         <option value="$PROJECT_DIR$/cylinder.js" />
         <option value="$PROJECT_DIR$/bla.html" />
+        <option value="$PROJECT_DIR$/tmp.html" />
+        <option value="$PROJECT_DIR$/exercise1.html" />
+        <option value="$PROJECT_DIR$/ueb.html" />
         <option value="$PROJECT_DIR$/ueb07.html" />
+        <option value="$PROJECT_DIR$/cylinder.html" />
       </list>
     </option>
   </component>
@@ -111,12 +130,22 @@
       <updated>1545481282710</updated>
       <workItem from="1545481284460" duration="6295000" />
       <workItem from="1545508455243" duration="1095000" />
-      <workItem from="1545563155598" duration="6150000" />
+      <workItem from="1545563155598" duration="7461000" />
+      <workItem from="1545576629223" duration="4987000" />
+      <workItem from="1545925845289" duration="136000" />
+      <workItem from="1545988936054" duration="30000" />
+      <workItem from="1545989034159" duration="1567000" />
+      <workItem from="1546093487303" duration="4022000" />
+      <workItem from="1546186530418" duration="3693000" />
+      <workItem from="1546251644510" duration="4943000" />
+      <workItem from="1546259883594" duration="1098000" />
+      <workItem from="1546261472130" duration="3457000" />
+      <workItem from="1546423149349" duration="8169000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13540000" />
+    <option name="totallyTimeSpent" value="46953000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -164,26 +193,29 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bla.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cylinder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/cylinder.js" />
+    <entry file="file://$PROJECT_DIR$/bla.html" />
+    <entry file="file://$PROJECT_DIR$/tmp.html" />
+    <entry file="file://$PROJECT_DIR$/exercise1.html" />
+    <entry file="file://$PROJECT_DIR$/ueb.html" />
     <entry file="file://$PROJECT_DIR$/ueb07.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+        <state relative-caret-position="3026">
+          <caret line="178" column="13" selection-start-line="161" selection-start-column="12" selection-end-line="178" selection-end-column="13" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cylinder.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="154" column="16" selection-start-line="154" selection-start-column="16" selection-end-line="154" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

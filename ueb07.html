@@ -31,6 +31,8 @@
             // Put in a camera
             camera = new THREE.PerspectiveCamera( 45, container.offsetWidth / container.offsetHeight, 1, 4000 );
             camera.position.set( 0, 0, 5 );
+            camera.fov = 100;
+            camera.updateProjectionMatrix();
 
             // Create a directional light to show off the object
             var light = new THREE.DirectionalLight( 0xffffff, 1.5);
@@ -55,45 +57,38 @@
             var geometry = new THREE.Geometry();
 
             //Gesamthöhe: height * m
-            var h = 3;
-            var radius = 1;
+            var h = 1;
+            var radius = 2;
             var n = 16;
             var m = 4;
             var height = h*m;
 
             //J
-            geometry.vertices.push(new THREE.Vector3(0,0,0));
-
-            var oberseite = [];
-            var unterseite = [];
-
-            for (var i = 1; i <= n; i++) {
-                var theta = (i / n) * Math.PI * 2;
-                oberseite.push([Math.cos(theta) * radius, Math.sin(theta) * radius, 0]);
-                unterseite.push([height + Math.cos(theta) * radius, height + Math.sin(theta) * radius, 0]);
-                geometry.vertices.push(new THREE.Vector3(Math.cos(theta) * radius, Math.sin(theta) * radius, 0))
-            }
-
-            for (var i = 0; i < oberseite.length; i++) {
-                geometry.faces.push(new THREE.Face3(0,i,i+1,null,null,0));
-                if (i == oberseite.length-1) {
-                    geometry.faces.push(new THREE.Face3(0,i+1,1,null,null,0));
-                }
-            }
+            var j = new THREE.Vector3(0,0,0);
+            //j.set(0,0,0);
+            triangleFan(j, radius, n, geometry, 1);
 
             //A
-            geometry.vertices.push(new THREE.Vector3(0,height,0));
-            for (var i = 0; i < unterseite.length; i++) {
-                geometry.faces.push(new THREE.Face3(0,i,i+1,null,null,0));
-                if (i == oberseite.length-1) {
-                    geometry.faces.push(new THREE.Face3(0,i+1,1,null,null,0));
-                }
+            var a = new THREE.Vector3(1,1,0);
+            triangleFan(a, radius, n, geometry, 6);
+
+            /**
+            var centres = generateCentres(m,h);
+            var circles = [];
+
+            for (var i = 0; i < m; i++) {
+                circles.push(getCircleCoordinates(centres[i], radius, n));
             }
 
+            geometry = drawCircle(centres[0], circles[0]);                                   //Oberseite
+            //drawCircle(centres[centres.length-1], circles[circles.length-1], geometry);     //Unterseite
+
+            */
             // And put the geometry and material together into a mesh
             cube = new THREE.Mesh(geometry,faceMaterial);
-            var sphereAxis = new THREE.AxesHelper(20);
-            cube.add(sphereAxis);
+
+            //var sphereAxis = new THREE.AxesHelper(20);
+            //cube.add(sphereAxis);
 
             // Turn it toward the scene, or we won't see the cube shape!
             cube.rotation.x = Math.PI / 5;
@@ -110,6 +105,80 @@
             run();
         }
 
+        function generateCentres(m,h) {
+            let result = [];
+            for (var i = 0; i < m; i++) {
+                result.push(new THREE.Vector3(0,0,i*h));
+            }
+            return result;
+        }
+
+        function getCircleCoordinates(v, radius, n) {
+            var result = [];
+            var x = parseInt(v.getComponent(0));
+            var y = parseInt(v.getComponent(1));
+            for (var i = 1; i <= n; i++) {
+                var theta = (i / n) * Math.PI * 2;
+                result.push(new THREE.Vector3(x + Math.cos(theta) * radius, y + Math.sin(theta) * radius, v.getComponent(2)));
+                //geometry.faces.push(new THREE.Face3(v,i-1,i,null,null,0));
+                if (i == n-1) {
+                   // geometry.faces.push(new THREE.Face3(v,i+1,1,null,null,0));
+                }
+            }
+
+            return result;
+        }
+        
+        function drawCircle(center, circle) {
+            var result = new THREE.Geometry();
+            result.vertices.push(center);
+            for (var i = 0; i < circle.length; i++) {
+                result.vertices.push(circle[i]);
+            }
+            for (var i = 0; i < circle.length; i++) {
+                if (i == circle.length-1) {
+                    //document.write(center + "." + circle[0] + "." + circle[i] + "   <--->   ");
+                    result.faces.push(new THREE.Face3(center, circle[0], circle[i], null, null, 3));
+                } else {
+                    //document.write(center + "." + circle[i] + "." + circle[i + 1] + "   <--->   ");
+                    result.faces.push(new THREE.Face3(center, circle[i], circle[i + 1], null, null, 3));
+                }
+            }
+            //document.write(geometry.faces.length);
+            /**
+            for (var i = 1; i <= circle.length; i++) {
+                geometry.vertices.push(circle[i].getComponent(0), circle[i].getComponent(1), circle[i].getComponent(2));
+                if (i == n-1) {
+                    geometry.faces.push(new THREE.Face3(center, circle[i+1], circle[1], null, null, 3));
+                } else {
+                    geometry.faces.push(new THREE.Face3(center, circle[i - 1], circle[i], null, null, 3));
+                }
+            }
+             */
+            return result;
+        }
+
+        function triangleFan(v, radius, n, geometry, run) {
+            geometry.vertices.push(v);
+            var x = parseInt(v.getComponent(0));
+            var y = parseInt(v.getComponent(1));
+            for (var i = run; i <= n; i++) {
+                var theta = (i / n) * Math.PI * 2;
+                geometry.vertices.push(new THREE.Vector3(x + Math.cos(theta) * radius, y + Math.sin(theta) * radius, v.getComponent(2)));
+                //geometry.faces.push(new THREE.Face3(v,i-1,i,null,null,0));
+                if (i == run) {
+                    geometry.faces.push(new THREE.Face3(v,i,n,null,null,0));
+                    //document.write(n + "..." + i + "   <--->   ");
+                } else {
+                    geometry.faces.push(new THREE.Face3(v,i,i-1,null,null,0));
+                    //document.write(i + "." + i-1 + "   <--->   ");
+                }
+                if (i == n-1) {
+                    //geometry.faces.push(new THREE.Face3(v,i+1,1,null,null,0));
+                }
+            }
+        }
+
         function run()
         {
             // Render the scene
@@ -118,7 +187,7 @@
             // Spin the cube for next frame
             if (animating)
             {
-                if (yrot) cube.rotation.y -= 0.01; else cube.rotation.x -= 0.01;
+                if (yrot) cube.rotation.y -= 0.05; else cube.rotation.x -= 0.05;
             }
 
             // Ask for another frame
