@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shader fuer Oberflaechen mit Loch</title>
+    <script src="three.min.js"></script>
+    <script src="RequestAnimationFrame.js"></script>
+    <script>
+        var renderer = null,
+            scene = null,
+            camera = null,
+            myMesh = null,
+            animating = false,
+            yrot = false,
+            material = null,
+            pmaterial = null;
+
+        function onLoad() {
+            // Grab our container div
+            var container = document.getElementById("container");
+
+            // Create the Three.js renderer, add it to our div
+            renderer = new THREE.WebGLRenderer({antialias: true});
+            renderer.setSize(container.offsetWidth, container.offsetHeight);
+            container.appendChild(renderer.domElement);
+
+            // Create a new Three.js scene
+            scene = new THREE.Scene();
+
+            // Put in a camera
+            camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 1, 4000);
+            camera.position.set(0, 0, 5);
+
+            // Create a directional light to show off the object
+            var light = new THREE.DirectionalLight(0xffffff, 1.5);
+            light.position.set(0, 0, 1);
+            scene.add(light);
+
+            // ShaderMaterial for Cube (Foreground) and Plane (Background) 
+            material = new THREE.ShaderMaterial({
+                uniforms: {
+                    time: {type: "f", value: 1.0},
+                    aspectRatio: {
+                        type: "f",
+                        value: (container.offsetWidth / container.offsetHeight)
+                    }
+                },
+                vertexShader: document.getElementById('position-shader-vs').textContent,
+                fragmentShader: document.getElementById('cube-shader-fs').textContent
+            });
+
+
+            pmaterial = new THREE.ShaderMaterial({
+                uniforms: {
+                    time: {type: "f", value: 1.0},
+                    aspectRatio: {
+                        type: "f",
+                        value: (container.offsetWidth / container.offsetHeight)
+                    }
+                },
+                vertexShader: document.getElementById('position-shader-vs').textContent,
+                fragmentShader: document.getElementById('plane-shader-fs').textContent
+            });
+
+            // Create the Foreground geometry (Cube)
+            var geometry = new THREE.CubeGeometry(1, 1, 1);
+            //var geometry = new THREE.SphereGeometry(1,32,32);
+
+
+            // And put the geometry and material together into a mesh
+            myMesh = new THREE.Mesh(geometry, material);
+
+            // Turn it toward the scene, or we won't see the cube shape!
+            myMesh.rotation.x = Math.PI / 5;
+            myMesh.rotation.y = Math.PI / 5;
+
+
+            // Add the cube to our scene
+            scene.add(myMesh);
+
+            // Create Background (Plane) and add it to the scene
+
+            var pgeometry = new THREE.PlaneGeometry(5, 5, 1, 1);
+            var plane = new THREE.Mesh(pgeometry, pmaterial);
+            plane.position.z = -8;
+            scene.add(plane);
+
+            // Add a mouse up handler to toggle the animation
+            addMouseHandler();
+
+            // Run our render loop
+            run();
+        }
+
+        function run() {
+            // as time goes by ...
+            material.uniforms.time.value += 0.1;
+            pmaterial.uniforms.time.value += 0.1;
+
+            // Render the scene
+            renderer.render(scene, camera);
+
+            // Spin the cube for next frame
+            if (animating) {
+                if (yrot) myMesh.rotation.y -= 0.01;
+                else myMesh.rotation.x -= 0.01;
+            }
+
+            // Ask for another frame
+            requestAnimationFrame(run);
+        }
+
+        function addMouseHandler() {
+            var dom = renderer.domElement;
+            dom.addEventListener('mouseup', onMouseUp, false);
+        }
+
+        function onMouseUp(event) {
+            event.preventDefault();
+            animating = !animating;
+            if (animating) yrot = !yrot;
+        }
+    </script>
+
+    <!--
+     UM LOECHER ZU ERZEUGEN, MUESSEN SIE NUR DEN FRAGMENT SHADER ANPASSEN !!!
+     Mit dem Statement 'discard;' koennen Sie im Fragement Shader angeben,
+     dass kein Pixel gezeichnet werden soll. 
+    -->
+
+    <!-- ################ FRAGMENT SHADER FUER DEN WUERFEL ######################## -->
+
+    <script id="cube-shader-fs" type="x-shader/x-fragment">
+        uniform float time;
+        varying vec3 posLocal;
+        varying vec4 pos3D;
+        varying vec4 pos2D;
+        uniform float aspectRatio;
+
+        void main(void) {
+            gl_FragColor = vec4(posLocal.x*5.0, posLocal.y*5.0, posLocal.z*5.0, 1.0);
+            if (gl_FragColor.x >= -0.1 && gl_FragColor.x <= 0.1 &&
+                gl_FragColor.y >= -0.1 && gl_FragColor.y <= 0.1 &&
+                gl_FragColor.z >= -0.1 && gl_FragColor.y <= 0.1) discard;
+        }
+    </script>
+
+    <!--
+     AN DEN FOLGENDEN SHADERN MUESSEN SIE NICHTS AENDERN
+    -->
+
+    <!-- ################ FRAGMENT SHADER FUER DIE EBENE (PLANE) ######################## -->
+
+    <script id="plane-shader-fs" type="x-shader/x-fragment">
+        varying vec3 posLocal;    
+        varying vec4 pos3D;    
+        varying vec4 pos2D; // nach Projektion liegen die Koordinaten in [-1,1]   
+        uniform float time;    
+     
+        void main(void) { 
+           float freq=160.0;
+           gl_FragColor = vec4(sin(freq*pos2D.x+time), cos(freq*pos2D.y+time), sin(freq*pos2D.x*pos2D.y*pos2D.z), 1.0);    
+         }
+    </script>
+
+    <!-- ################ VERTEX SHADER FUER WUERFEL UND EBENE ######################## -->
+
+    <script id="position-shader-vs" type="x-shader/x-vertex">     
+        varying vec3 posLocal;
+        varying vec4 pos2D;
+        varying vec4 pos3D;
+        uniform float time;
+
+        void main(void) {
+         posLocal = position;
+         pos3D = modelViewMatrix*vec4(position, 1.0);
+         pos2D = projectionMatrix*pos3D;
+         gl_Position = pos2D;
+         pos3D = pos3D/pos3D.w;  // rechne homogene Koordinaten zurueck in normale Koordinaten
+         pos2D = pos2D/pos2D.w;  // rechne homogene Koordinaten zurueck in normale Koordinaten
+        }
+    </script>
+
+</head>
+
+<body onLoad="onLoad();" style="">
+
+<div style="text-align: center;">
+    <h1>Simon Trumm (120099)</h1>
+    <div id="container" style="width:500px; height:500px; margin: 0 auto"></div>
+    <div id="prompt" style="margin: 0 auto">Click to animate the cube</div>
+</div>
+</body>
+</html>

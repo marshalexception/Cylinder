@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9fac39ea-d22a-4969-a78d-e9446c2c0edb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cylinder.html" beforeDir="false" afterPath="$PROJECT_DIR$/cylinder.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,15 +15,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cylinder.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="108" column="69" selection-start-line="108" selection-start-column="69" selection-end-line="108" selection-end-column="69" />
+            <state relative-caret-position="1742">
+              <caret line="184" column="32" selection-start-line="184" selection-start-column="12" selection-end-line="184" selection-end-column="32" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ShaderLochAufgabe.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="140" column="38" selection-start-line="140" selection-start-column="37" selection-end-line="140" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -54,19 +62,20 @@
       <list>
         <option value="$PROJECT_DIR$/cylinder.js" />
         <option value="$PROJECT_DIR$/bla.html" />
-        <option value="$PROJECT_DIR$/tmp.html" />
         <option value="$PROJECT_DIR$/exercise1.html" />
         <option value="$PROJECT_DIR$/ueb.html" />
         <option value="$PROJECT_DIR$/ueb07.html" />
         <option value="$PROJECT_DIR$/cylinder.html" />
+        <option value="$PROJECT_DIR$/tmp.html" />
+        <option value="$PROJECT_DIR$/ShaderLochAufgabe.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="20" />
-    <option name="width" value="1346" />
-    <option name="height" value="688" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="119" />
+    <option name="y" value="43" />
+    <option name="width" value="1601" />
+    <option name="height" value="906" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -130,17 +139,21 @@
       <workItem from="1546261472130" duration="3457000" />
       <workItem from="1546423149349" duration="10492000" />
       <workItem from="1546443887802" duration="96000" />
+      <workItem from="1546611935067" duration="459000" />
+      <workItem from="1546690353246" duration="780000" />
+      <workItem from="1546700800141" duration="1561000" />
+      <workItem from="1546810242773" duration="911000" />
+      <workItem from="1546947479659" duration="410000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49372000" />
+    <option name="totallyTimeSpent" value="53493000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="119" y="43" width="1601" height="906" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30326295" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -184,7 +197,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/cylinder.js" />
     <entry file="file://$PROJECT_DIR$/bla.html" />
-    <entry file="file://$PROJECT_DIR$/tmp.html" />
     <entry file="file://$PROJECT_DIR$/exercise1.html" />
     <entry file="file://$PROJECT_DIR$/ueb.html" />
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -196,14 +208,22 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ueb07.html" />
+    <entry file="file://$PROJECT_DIR$/tmp.html" />
     <entry file="file://$PROJECT_DIR$/cylinder.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="108" column="69" selection-start-line="108" selection-start-column="69" selection-end-line="108" selection-end-column="69" />
+        <state relative-caret-position="1742">
+          <caret line="184" column="32" selection-start-line="184" selection-start-column="12" selection-end-line="184" selection-end-column="32" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ShaderLochAufgabe.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="140" column="38" selection-start-line="140" selection-start-column="37" selection-end-line="140" selection-end-column="38" />
         </state>
       </provider>
     </entry>
