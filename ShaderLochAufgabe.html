@@ -73,7 +73,6 @@
             myMesh.rotation.x = Math.PI / 5;
             myMesh.rotation.y = Math.PI / 5;
 
-
             // Add the cube to our scene
             scene.add(myMesh);
 
@@ -119,6 +118,7 @@
             animating = !animating;
             if (animating) yrot = !yrot;
         }
+
     </script>
 
     <!--
@@ -135,12 +135,18 @@
         varying vec4 pos3D;
         varying vec4 pos2D;
         uniform float aspectRatio;
+        precision mediump float;
 
         void main(void) {
             gl_FragColor = vec4(posLocal.x*5.0, posLocal.y*5.0, posLocal.z*5.0, 1.0);
-            if (gl_FragColor.x >= -0.1 && gl_FragColor.x <= 0.1 &&
-                gl_FragColor.y >= -0.1 && gl_FragColor.y <= 0.1 &&
-                gl_FragColor.z >= -0.1 && gl_FragColor.y <= 0.1) discard;
+
+            if (gl_FragColor.x >= -0.99 && gl_FragColor.x <= 0.99 &&
+                gl_FragColor.y >= -0.99 && gl_FragColor.y <= 0.99) discard;
+            if (gl_FragColor.x >= -0.99 && gl_FragColor.x <= 0.99 &&
+                gl_FragColor.z >= -0.99 && gl_FragColor.z <= 0.99) discard;
+            if (gl_FragColor.y >= -0.99 && gl_FragColor.y <= 0.99 &&
+                gl_FragColor.z >= -0.99 && gl_FragColor.z <= 0.99) discard;
+
         }
     </script>
 

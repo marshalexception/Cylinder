@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fac39ea-d22a-4969-a78d-e9446c2c0edb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShaderLochAufgabe.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShaderLochAufgabe.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cylinder.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1742">
-              <caret line="184" column="32" selection-start-line="184" selection-start-column="12" selection-end-line="184" selection-end-column="32" />
+            <state relative-caret-position="119">
+              <caret line="64" column="46" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="46" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -31,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ShaderLochAufgabe.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="140" column="38" selection-start-line="140" selection-start-column="37" selection-end-line="140" selection-end-column="38" />
+            <state relative-caret-position="271">
+              <caret line="137" column="32" selection-start-line="137" selection-start-column="32" selection-end-line="137" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -52,6 +52,9 @@
       <find>shape</find>
       <find>faces.push</find>
       <find>hoh</find>
+      <find>posLocal</find>
+      <find>position</find>
+      <find>gl_Frag</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -65,17 +68,17 @@
         <option value="$PROJECT_DIR$/exercise1.html" />
         <option value="$PROJECT_DIR$/ueb.html" />
         <option value="$PROJECT_DIR$/ueb07.html" />
-        <option value="$PROJECT_DIR$/cylinder.html" />
         <option value="$PROJECT_DIR$/tmp.html" />
+        <option value="$PROJECT_DIR$/cylinder.html" />
         <option value="$PROJECT_DIR$/ShaderLochAufgabe.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="119" />
-    <option name="y" value="43" />
-    <option name="width" value="1601" />
-    <option name="height" value="906" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-100" />
+    <option name="y" value="-18" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -144,16 +147,18 @@
       <workItem from="1546700800141" duration="1561000" />
       <workItem from="1546810242773" duration="911000" />
       <workItem from="1546947479659" duration="410000" />
+      <workItem from="1547036059560" duration="2577000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53493000" />
+    <option name="totallyTimeSpent" value="56070000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="119" y="43" width="1601" height="906" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30326295" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19940476" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -211,8 +216,8 @@
     <entry file="file://$PROJECT_DIR$/tmp.html" />
     <entry file="file://$PROJECT_DIR$/cylinder.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1742">
-          <caret line="184" column="32" selection-start-line="184" selection-start-column="12" selection-end-line="184" selection-end-column="32" />
+        <state relative-caret-position="119">
+          <caret line="64" column="46" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="46" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -222,8 +227,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ShaderLochAufgabe.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="140" column="38" selection-start-line="140" selection-start-column="37" selection-end-line="140" selection-end-column="38" />
+        <state relative-caret-position="271">
+          <caret line="137" column="32" selection-start-line="137" selection-start-column="32" selection-end-line="137" selection-end-column="32" />
         </state>
       </provider>
     </entry>
