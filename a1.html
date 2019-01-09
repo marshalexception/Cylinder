@@ -147,26 +147,19 @@
         uniform float aspectRatio;
 
         void main(void) {
-
             gl_FragColor = vec4(posLocal.x*5.0, posLocal.y*5.0, posLocal.z*5.0, 1.0);
-            /**
-            float s = (2.0 * 3.14159265359) / 360.0;
-            for (int i = 0; i < 360; i++) {
-                float t = s * float(i);
-                float circle_x = 0.5*cos(t);
-                float circle_y = 0.5*sin(t);
-                if (gl_FragColor.x >= circle_x && gl_FragColor.x <= circle_y) discard;
-                if (gl_FragColor.y >= circle_x && gl_FragColor.y <= circle_y) discard;
+            float x = gl_FragColor.x;
+            float y = gl_FragColor.y;
+            float z = gl_FragColor.z;
+            if (sqrt(x*x + y*y) < 0.9) {
+                discard;
             }
-            */
-
-            if (gl_FragColor.x >= -0.99 && gl_FragColor.x <= 0.99 &&
-                gl_FragColor.y >= -0.99 && gl_FragColor.y <= 0.99) discard;
-            if (gl_FragColor.x >= -0.99 && gl_FragColor.x <= 0.99 &&
-                gl_FragColor.z >= -0.99 && gl_FragColor.z <= 0.99) discard;
-            if (gl_FragColor.y >= -0.99 && gl_FragColor.y <= 0.99 &&
-                gl_FragColor.z >= -0.99 && gl_FragColor.z <= 0.99) discard;
-
+            if (sqrt(x*x + z*z) < 0.9) {
+                discard;
+            }
+            if (sqrt(z*z + y*y) < 0.9) {
+                discard;
+            }
         }
     </script>
 
