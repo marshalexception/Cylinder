@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<head>
+<title>Welcome to WebGL</title>
+
+	<link rel="stylesheet" href="../css/webglbook.css" /> 
+	<script src="three.min.js"></script>
+	<script src="RequestAnimationFrame.js"></script>
+	<script>
+	
+	var renderer = null, 
+		scene = null, 
+		camera = null,
+		cube = null,
+		animating = false,
+                yrot = false;
+	
+        
+	function onLoad()
+	{
+		// Grab our container div
+        var container = document.getElementById("container");
+
+        // Create the Three.js renderer, add it to our div
+	    renderer = new THREE.WebGLRenderer( { antialias: true } );
+	    renderer.setSize(container.offsetWidth, container.offsetHeight);
+	    container.appendChild( renderer.domElement );
+
+	    // Create a new Three.js scene
+	    scene = new THREE.Scene();
+
+	    // Put in a camera
+        camera = new THREE.PerspectiveCamera( 45, container.offsetWidth / container.offsetHeight, 1, 4000 );
+        camera.position.set( 0, 0, 5 );
+
+        // Create a directional light to show off the object
+		var light = new THREE.DirectionalLight( 0xffffff, 1.5);
+		light.position.set(0, 0, 1);
+		scene.add( light );
+
+        // Create a texture-mapped cube and add it to the scene
+        
+        // Create a shaded, texture-mapped cube and add it to the scene
+        
+        // First, load the texture map
+        var mapUrl = 'simpsons.gif';
+        var mymap = THREE.ImageUtils.loadTexture(mapUrl);
+ 
+        // Now, create a basic material; pass in the map
+        var material = new THREE.MeshBasicMaterial({ map: mymap    });
+
+        // Create the cube geometry and the UV-mapping by hand
+
+        // The faceVertexUvs property of geometry is an array of arrays that 
+        // contains the coordinate mapping for each face of the geometry  
+        
+        var geometry = new THREE.Geometry(); 
+        geometry.faceVertexUvs[0]=[]
+        
+        var uv_a=new THREE.Vector2(0,1);
+        var uv_b=new THREE.Vector2(0.25,1);
+        var uv_c=new THREE.Vector2(0.5,1);
+        var uv_d=new THREE.Vector2(0.75,1);
+        var uv_e=new THREE.Vector2(0,0.75); 
+        var uv_f=new THREE.Vector2(0.25, 0.75);
+        var uv_g=new THREE.Vector2(0.5, 0.75);
+        var uv_h=new THREE.Vector2(0.75,0.75);
+        var uv_i=new THREE.Vector2(0.25,0.5);
+        var uv_j=new THREE.Vector2(0.5,0.5);
+        var uv_k=new THREE.Vector2(0.25,0.25);
+        var uv_l=new THREE.Vector2(0.5,0.25);
+        var uv_m=new THREE.Vector2(0.25,0);
+        var uv_n=new THREE.Vector2(0.5,0);
+         
+        geometry.vertices.push(new THREE.Vector3( 1.0,  1.0, -1.0));
+        geometry.vertices.push(new THREE.Vector3(-1.0,  1.0, -1.0));
+        geometry.vertices.push(new THREE.Vector3(-1.0, -1.0, -1.0));
+        geometry.vertices.push(new THREE.Vector3(1.0, -1.0, -1.0));
+        geometry.vertices.push(new THREE.Vector3(1.0,  1.0,  1.0));
+        geometry.vertices.push(new THREE.Vector3(-1.0,  1.0,  1.0));
+        geometry.vertices.push(new THREE.Vector3(-1.0, -1.0,  1.0));
+        geometry.vertices.push(new THREE.Vector3(1.0, -1.0,  1.0));
+
+        geometry.faces.push(new THREE.Face3(0,4,3)); 
+        geometry.faceVertexUvs[0].push([uv_a,uv_e,uv_b]);
+
+        geometry.faces.push(new THREE.Face3(7,3,4));
+        geometry.faceVertexUvs[0].push([uv_f,uv_b,uv_e]);
+
+        geometry.faces.push(new THREE.Face3(3,7,2)); 
+        geometry.faceVertexUvs[0].push([uv_a,uv_e,uv_b]);
+
+        geometry.faces.push(new THREE.Face3(6,2,7));
+        geometry.faceVertexUvs[0].push([uv_f,uv_b,uv_e]);
+        
+        geometry.faces.push(new THREE.Face3(2,6,1));
+        geometry.faceVertexUvs[0].push([uv_a,uv_e,uv_b]);
+        
+        geometry.faces.push(new THREE.Face3(5,1,6));
+        geometry.faceVertexUvs[0].push([uv_f,uv_b,uv_e]);
+ 
+        geometry.faces.push(new THREE.Face3(3,2,0));
+        geometry.faceVertexUvs[0].push([uv_a,uv_e,uv_b]);
+ 
+        geometry.faces.push(new THREE.Face3(1,0,2));
+        geometry.faceVertexUvs[0].push([uv_f,uv_b,uv_e]);
+
+        geometry.faces.push(new THREE.Face3(0,1,4)); 
+        geometry.faceVertexUvs[0].push([uv_a,uv_e,uv_b]);
+
+        geometry.faces.push(new THREE.Face3(5,4,1));
+        geometry.faceVertexUvs[0].push([uv_f,uv_b,uv_e]);
+
+        geometry.faces.push(new THREE.Face3(4,5,7));
+        geometry.faceVertexUvs[0].push([uv_a,uv_e,uv_b]);
+
+        geometry.faces.push(new THREE.Face3(6,7,5));
+        geometry.faceVertexUvs[0].push([uv_f,uv_b,uv_e]);
+ 
+        // And put the geometry and material together into a mesh
+        cube = new THREE.Mesh(geometry,material);
+
+        // Turn it toward the scene, or we won't see the cube shape!
+        cube.rotation.x = Math.PI / 5;
+        cube.rotation.y = Math.PI / 5;
+        
+
+        // Add the cube to our scene
+        scene.add( cube );
+
+        // Add a mouse up handler to toggle the animation
+        addMouseHandler();
+
+        // Run our render loop
+        run();
+	}
+
+	function run()
+	{
+		// Render the scene
+		renderer.render( scene, camera );
+
+		// Spin the cube for next frame
+		if (animating)
+		{
+			if (yrot) cube.rotation.y -= 0.01; else cube.rotation.x -= 0.01;
+		}
+			
+		// Ask for another frame
+    	requestAnimationFrame(run);	
+	}
+
+	function addMouseHandler()
+	{
+		var dom = renderer.domElement;
+		
+		dom.addEventListener( 'mouseup', onMouseUp, false);
+	}
+	
+	function onMouseUp	(event)
+	{
+	    event.preventDefault();
+
+	    animating = !animating;
+            
+            if (animating) yrot = !yrot;
+	}	
+	
+	</script>
+
+</head>
+<body onLoad="onLoad();" style="">
+	<center><h1>Welcome to WebGL!</h1></center>
+    <div id="container" style="width:95%; height:80%; position:absolute;"></div>
+	<div id="prompt" style="width:95%; height:6%; bottom:0; text-align:center; position:absolute;">Click to animate the cube</div>
+
+</body>
+</html>
